@@ -3,7 +3,8 @@ import "../SignupPage/Signup.css"
 import vid1 from "../SignupPage/Assests/car.mp4"
 function Signup() {
 
-    let [username, setUsername] = useState("");
+    let [firstname, setFirstname] = useState("");
+    let [lastname, setLastname] = useState("");
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
 
@@ -22,7 +23,11 @@ function Signup() {
                     <form action="#" onSubmit={submitForm}>
                         <h1>Signup</h1>
                         <div className="input-Box">
-                            <input type="text" placeholder='Username' required onChange={(e) => { setUsername(e.target.value) }} />
+                            <input type="text" placeholder='First-Name' required onChange={(e) => { setFirstname(e.target.value) }} />
+                            <i class='bx bxs-user'></i>
+                        </div>
+                        <div className="input-Box">
+                            <input type="text" placeholder='Last-Name' required onChange={(e) => { setLastname(e.target.value) }} />
                             <i class='bx bxs-user'></i>
                         </div>
                         <div className="input-Box">

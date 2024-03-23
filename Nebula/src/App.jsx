@@ -5,6 +5,7 @@ import About from './Components/About/About'
 import Contact from './Components/Contact/Contact'
 import Signup from './Components/SignupPage/Signup'
 import Login from './Components/SignupPage/Login'
+import Chatpage from './Components/Chatpage/Chatpage'
 const App = () => {
   return (
     <div style={{ height: "100%" }}>
@@ -12,8 +13,9 @@ const App = () => {
       {/* <Home /> */}
       {/* <About /> */}
       {/* <Contact /> */}
-      <Signup />
+      {/* <Signup /> */}
       {/* <Login /> */}
+      <Chatpage />
     </div>
   )
 }
