@@ -64,7 +64,7 @@ span {
     background-color: transparent;
     margin-left: 17rem;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.3s linear;
     font-weight: 500;
 }
 
@@ -75,8 +75,8 @@ span {
     top: 113px;
 }
 
-.leftSection button:hover {
-    padding: 10px 25px;
+.leftSection .homebtn:hover {
+    transform: scale(1.1, 1.1);
     background-color: #26DDF9;
 
 }

@@ -8,12 +8,12 @@ import Login from './Components/SignupPage/Login'
 const App = () => {
   return (
     <div style={{ height: "100%" }}>
-      {/* <NavBar />
-      <Home />
-      <About />
-      <Contact /> */}
-      {/* <Signup /> */}
-      <Login />
+      {/* <NavBar /> */}
+      {/* <Home /> */}
+      {/* <About /> */}
+      {/* <Contact /> */}
+      <Signup />
+      {/* <Login /> */}
     </div>
   )
 }

@@ -80,6 +80,11 @@ video {
     font-size: 1rem;
     color: #333;
     font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.wrapper .btn:hover {
+    background-color: #dfdcdc;
 }
 
 .wrapper .register-link {
@@ -98,3 +103,6 @@ video {
 .register-link p a:hover {
     text-decoration: underline;
 }
+
+
+
