@@ -1,15 +1,34 @@
 import React from 'react'
+import toast from 'react-hot-toast'
 import { useState } from 'react'
 import vid1 from "../SignupPage/Assests/car.mp4"
 import "../SignupPage/Login.css"
+import axios from 'axios';
 function Login() {
-    let [email, setEmail] = useState("");
-    let [password, setPassword] = useState("");
-
-    const submitForm = (e) => {
+    // let [email, setEmail] = useState("");
+    // let [password, setPassword] = useState("");
+    const [data, setData] = useState({
+        email: "",
+        password: ""
+    })
+    const submitForm = async (e) => {
         e.preventDefault();
-        console.log(email);
-        console.log(password);
+        const { email, password } = data;
+
+        try {
+            const { data } = await axios.post("./login", {
+                email, password
+            });
+            if (data.error) {
+                toast.error(data.error);
+
+            } else {
+                toast.success("Logged in successfully!");
+                setData({ email: "", password: "" });
+            }
+        } catch (error) {
+
+        }
     }
     return (
         <div className='Login-Page'>
@@ -20,11 +39,11 @@ function Login() {
                     <form action="#" onSubmit={submitForm}>
                         <h1>Login</h1>
                         <div className="input-Box">
-                            <input type="text" placeholder='Email' required onChange={(e) => { setEmail(e.target.value) }} />
+                            <input type="text" placeholder='Email' required onChange={(e) => { setData({ ...data, email: e.target.value }) }} value={data.email} />
                             <i class='bx bxs-user'></i>
                         </div>
                         <div className="input-Box">
-                            <input type="password" placeholder='Password' required onChange={(e) => { setPassword(e.target.value) }} />
+                            <input type="password" placeholder='Password' required onChange={(e) => { setData({ ...data, password: e.target.value }) }} value={data.password} />
                             <i class='bx bxs-lock-alt'></i>
                         </div>
                         <button className="btn">LogIn</button>
