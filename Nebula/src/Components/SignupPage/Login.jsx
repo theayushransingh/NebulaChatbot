@@ -3,12 +3,12 @@ import { useState } from 'react'
 import vid1 from "../SignupPage/Assests/car.mp4"
 import "../SignupPage/Login.css"
 function Login() {
-    let [username, setUsername] = useState("");
+    let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log(username);
+        console.log(email);
         console.log(password);
     }
     return (
@@ -20,7 +20,7 @@ function Login() {
                     <form action="#" onSubmit={submitForm}>
                         <h1>Login</h1>
                         <div className="input-Box">
-                            <input type="text" placeholder='Username' required onChange={(e) => { setUsername(e.target.value) }} />
+                            <input type="text" placeholder='Email' required onChange={(e) => { setEmail(e.target.value) }} />
                             <i class='bx bxs-user'></i>
                         </div>
                         <div className="input-Box">

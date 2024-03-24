@@ -8,10 +8,14 @@ import loadingLogo from '../Chatpage/Assets/loadingLogo3.png'
 function Chatpage() {
 
 
-    const { onSent, recentPrompt, showResult, loading, resultData, SetInput, input } = useContext(Context)
+    const { onSent, recentPrompt, showResult, loading, resultData, SetInput, input, prevPrompts, setRecentPrompt, newChat } = useContext(Context)
 
     const [userName, SetUserName] = useState("Dev")
     const [extended, setExtended] = useState(false);
+    const loadprompt = async (prompt) => {
+        setRecentPrompt(prompt)
+        await onSent(prompt)
+    }
     return (
         <div className='Chatpage'>
             <aside className='Asidemenu'>
@@ -19,7 +23,7 @@ function Chatpage() {
                     <div className="menu">
                         <i className="ri-menu-line" onClick={() => setExtended(prev => !prev)}></i>
                     </div>
-                    <div className="newchat">
+                    <div className="newchat" onClick={() => { newChat() }}>
                         <i className="ri-add-large-line"></i>
                         {extended ? <p>New chat</p> : null}
                     </div>
@@ -29,10 +33,17 @@ function Chatpage() {
                             <p className="recentTitle">
                                 Recent
                             </p>
-                            <div className="recentEntry">
-                                <i className="ri-chat-4-line"></i>
-                                <p>React is The...</p>
-                            </div>
+                            {prevPrompts.map((item) => {
+                                return (
+                                    <div onClick={() => {
+                                        loadprompt(item);
+                                    }} className="recentEntry">
+                                        <i className="ri-chat-4-line"></i>
+                                        <p>{item.slice(0, 18)}...</p>
+                                    </div>
+                                )
+                            })}
+
                         </div>
                         : null
                     }
