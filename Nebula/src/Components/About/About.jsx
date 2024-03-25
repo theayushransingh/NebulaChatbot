@@ -1,9 +1,13 @@
 import React from 'react'
 import "../About/About.css"
+import Header from '../Header/NavBar'
 import leftImg from "../About/Images/HumanSkull.png"
+import Home from '../home/Home'
 function About() {
     return (
-        <div className='AboutSection'>
+        <>
+        <Header/>
+            <div className='AboutSection'>
             <div className='Container'>
                 <div className='leftImage'>
                     <img src={leftImg} alt="Image Not Found" />
@@ -34,6 +38,8 @@ function About() {
 
             </div>
         </div>
+        </>
+        
     )
 }
 

@@ -57,7 +57,7 @@ function Signup() {
                         </div>
                         <div className="input-Box">
                             <input type="text" placeholder='Email' required onChange={(e) => { setData({ ...data, email: e.target.value }) }} value={data.email} />
-                            <i class='bx bxs-envelope'></i>
+                            <i className='bx bxs-envelope'></i>
                         </div>
                         <div className="input-Box">
                             <input type="password" placeholder='Password' required onChange={(e) => { setData({ ...data, password: e.target.value }) }} value={data.password} />
