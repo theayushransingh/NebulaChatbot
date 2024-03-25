@@ -1,8 +1,11 @@
 import React from 'react'
 import "../Contact/Contact.css"
+import Header from '../Header/NavBar'
 
 function Contact() {
     return (
+        <>
+        <Header/>
         <div className="contact">
             <div className="container">
                 <div className="heading">
@@ -59,6 +62,8 @@ function Contact() {
                 </div>
             </div>
         </div>
+        </>
+        
     )
 }
 
