@@ -21,9 +21,9 @@ const App = () => {
         {/* <Home /> */}
         {/* <About /> */}
         {/* <Contact /> */}
-        {/* <Signup /> */}
+        <Signup />
         {/* <Login /> */}
-        <Chatpage />
+        {/* <Chatpage /> */}
       </UserContextProvider>
 
     </div>
