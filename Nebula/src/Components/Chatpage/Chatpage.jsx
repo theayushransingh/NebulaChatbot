@@ -11,10 +11,10 @@ function Chatpage() {
 
     const { onSent, recentPrompt, showResult, loading, resultData, SetInput, input, prevPrompts, setRecentPrompt, newChat } = useContext(Context)
 
-    // const [userName, SetUserName] = useState("Dev")
+    const [userName, SetUserName] = useState("Dev")
 
     const { user } = useContext(UserContext);
-    // { !!user && SetUserName(user.firstName) }
+    { !!user && SetUserName(user.firstName) }
 
     const [extended, setExtended] = useState(false);
     const loadprompt = async (prompt) => {
@@ -65,25 +65,25 @@ function Chatpage() {
                     {!showResult ?
                         <>
                             <div className="greet">
-                                <p> <span className='username'>Hello,{!!user && user.firstName}</span></p>
+                                <p> <span className='username'>Hello,{userName}</span></p>
                                 <p>How can I assist you today?</p>
                             </div>
                             <div className="chat-cards">
                                 <div className="chat-card">
                                     <p> What would the world be like if animals could talk</p>
-                                    <i class="ri-brain-line"></i>
+                                    <i className="ri-brain-line"></i>
                                 </div>
                                 <div className="chat-card">
                                     <p>How do I make a reservation?</p>
-                                    <i class="ri-calendar-2-line"></i>
+                                    <i className="ri-calendar-2-line"></i>
                                 </div>
                                 <div className="chat-card">
                                     <p>Can you provide more details about Programming</p>
-                                    <i class="ri-code-line"></i>
+                                    <i className ="ri-code-line"></i>
                                 </div>
                                 <div className="chat-card">
                                     <p>I need to learn a new skill for work. What online resources would you recommend?</p>
-                                    <i class="ri-graduation-cap-line"></i>
+                                    <i className="ri-graduation-cap-line"></i>
                                 </div>
                             </div>
 

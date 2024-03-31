@@ -3,9 +3,14 @@ import './Home.css';
 import Image from "../home/images/Right_image.png"
 import Leftimage from "../home/images/LeftFragments.png"
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom';
+import Header from '../Header/NavBar'
 function Home() {
     return (
+        <>
+        <Header/>
         <div className='HomeComponent'>
+            
             <div className='Container'>
                 <div className='leftSection'>
                     < motion.img
@@ -20,8 +25,10 @@ function Home() {
                     <p className='para'> Nebula is a groundbreaking chatbot designed to revolutionize user interactions and streamline communication processes. Drawing inspiration from the vastness and dynamism of outer space, Nebula represents an innovative approach to virtual assistants.</p>
                     {/* <h1>From Small Talk to Deep Dive:</h1>
                     <h1>Let Our Chatbot Guide You</h1> */}
-
-                    <button className='homebtn' >Try Nebula<i class="ri-arrow-right-up-line"></i></button>
+                    <Link to='/login'>
+                    <button className='homebtn' >Try Nebula<i className="ri-arrow-right-up-line"></i></button>
+                    </Link>
+                    
                 </div>
                 <div className='RightSection'>
                     <motion.img
@@ -33,6 +40,8 @@ function Home() {
                 </div>
             </div>
         </div>
+        </>
+        
     )
 }
 

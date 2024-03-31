@@ -2,21 +2,21 @@ import React, { useState } from 'react'
 import "../SignupPage/Signup.css"
 import vid1 from "../SignupPage/Assests/car.mp4"
 import axios from 'axios'
+import {Link, useNavigate} from 'react-router-dom'
 import toast from 'react-hot-toast'
-function Signup() {
 
-    // let [firstname, setFirstname] = useState("");
-    // let [lastname, setLastname] = useState("");
-    // let [email, setEmail] = useState("");
-    // let [password, setPassword] = useState("");
+
+function Signup() {
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
         email: "",
         password: ""
     })
+    const navigate = useNavigate()
     const submitForm = async (e) => {
         e.preventDefault();
+        
         const { firstName, lastName, email, password } = data;
         try {
             const { data } = await axios.post('./signup', {
@@ -32,7 +32,7 @@ function Signup() {
                     password: ""
                 })
                 toast.success("Account Created Successfully");
-                // navigate('./Login')
+                navigate('/login')
             }
         } catch (error) {
             console.log(error.message)
@@ -49,23 +49,23 @@ function Signup() {
                         <h1>Signup</h1>
                         <div className="input-Box">
                             <input type="text" placeholder='First-Name' required onChange={(e) => { setData({ ...data, firstName: e.target.value }) }} value={data.firstName} />
-                            <i class='bx bxs-user'></i>
+                            <i className='bx bxs-user'></i>
                         </div>
                         <div className="input-Box">
                             <input type="text" placeholder='Last-Name' required onChange={(e) => { setData({ ...data, lastName: e.target.value }) }} value={data.lastName} />
-                            <i class='bx bxs-user'></i>
+                            <i className='bx bxs-user'></i>
                         </div>
                         <div className="input-Box">
                             <input type="text" placeholder='Email' required onChange={(e) => { setData({ ...data, email: e.target.value }) }} value={data.email} />
-                            <i class='bx bxs-envelope'></i>
+                            <i className='bx bxs-envelope'></i>
                         </div>
                         <div className="input-Box">
                             <input type="password" placeholder='Password' required onChange={(e) => { setData({ ...data, password: e.target.value }) }} value={data.password} />
-                            <i class='bx bxs-lock-alt'></i>
+                            <i className='bx bxs-lock-alt'></i>
                         </div>
                         <button className="btn">Create Account</button>
                         <div className="register-link">
-                            <p>Already have an account? <a href="./Login.jsx">Login</a></p>
+                            <p>Already have an account? <Link to='/login'>Login</Link></p>
                         </div>
                     </form>
                 </div>

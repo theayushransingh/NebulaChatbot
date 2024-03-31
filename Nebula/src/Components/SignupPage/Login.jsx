@@ -3,14 +3,14 @@ import toast from 'react-hot-toast'
 import { useState } from 'react'
 import vid1 from "../SignupPage/Assests/car.mp4"
 import "../SignupPage/Login.css"
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 function Login() {
-    // let [email, setEmail] = useState("");
-    // let [password, setPassword] = useState("");
     const [data, setData] = useState({
         email: "",
         password: ""
     })
+    const navigate = useNavigate();
     const submitForm = async (e) => {
         e.preventDefault();
         const { email, password } = data;
@@ -25,6 +25,7 @@ function Login() {
             } else {
                 toast.success("Logged in successfully!");
                 setData({ email: "", password: "" });
+                navigate('/chat');
             }
         } catch (error) {
 
@@ -40,15 +41,15 @@ function Login() {
                         <h1>Login</h1>
                         <div className="input-Box">
                             <input type="text" placeholder='Email' required onChange={(e) => { setData({ ...data, email: e.target.value }) }} value={data.email} />
-                            <i class='bx bxs-user'></i>
+                            <i className='bx bxs-user'></i>
                         </div>
                         <div className="input-Box">
                             <input type="password" placeholder='Password' required onChange={(e) => { setData({ ...data, password: e.target.value }) }} value={data.password} />
-                            <i class='bx bxs-lock-alt'></i>
+                            <i className='bx bxs-lock-alt'></i>
                         </div>
                         <button className="btn">LogIn</button>
                         <div className="register-link">
-                            <p>Don't have an account? <a href="./Signup.jsx">Signup</a></p>
+                            <p>Don't have an account? <Link to='/signup'>Signup</Link></p>
                         </div>
                     </form>
                 </div>
