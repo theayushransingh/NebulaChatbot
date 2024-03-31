@@ -2,21 +2,21 @@ import React, { useState } from 'react'
 import "../SignupPage/Signup.css"
 import vid1 from "../SignupPage/Assests/car.mp4"
 import axios from 'axios'
+import {Link, useNavigate} from 'react-router-dom'
 import toast from 'react-hot-toast'
-function Signup() {
 
-    // let [firstname, setFirstname] = useState("");
-    // let [lastname, setLastname] = useState("");
-    // let [email, setEmail] = useState("");
-    // let [password, setPassword] = useState("");
+
+function Signup() {
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
         email: "",
         password: ""
     })
+    const navigate = useNavigate()
     const submitForm = async (e) => {
         e.preventDefault();
+        
         const { firstName, lastName, email, password } = data;
         try {
             const { data } = await axios.post('./signup', {
@@ -32,7 +32,7 @@ function Signup() {
                     password: ""
                 })
                 toast.success("Account Created Successfully");
-                // navigate('./Login')
+                navigate('/login')
             }
         } catch (error) {
             console.log(error.message)
@@ -65,7 +65,7 @@ function Signup() {
                         </div>
                         <button className="btn">Create Account</button>
                         <div className="register-link">
-                            <p>Already have an account? <a href="./Login.jsx">Login</a></p>
+                            <p>Already have an account? <Link to='/login'>Login</Link></p>
                         </div>
                     </form>
                 </div>

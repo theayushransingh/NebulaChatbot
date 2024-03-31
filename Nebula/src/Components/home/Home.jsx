@@ -26,7 +26,7 @@ function Home() {
                     {/* <h1>From Small Talk to Deep Dive:</h1>
                     <h1>Let Our Chatbot Guide You</h1> */}
                     <Link to='/login'>
-                    <button className='homebtn' >Try Nebula<i class="ri-arrow-right-up-line"></i></button>
+                    <button className='homebtn' >Try Nebula<i className="ri-arrow-right-up-line"></i></button>
                     </Link>
                     
                 </div>

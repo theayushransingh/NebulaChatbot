@@ -11,10 +11,10 @@ function Chatpage() {
 
     const { onSent, recentPrompt, showResult, loading, resultData, SetInput, input, prevPrompts, setRecentPrompt, newChat } = useContext(Context)
 
-    // const [userName, SetUserName] = useState("Dev")
+    const [userName, SetUserName] = useState("Dev")
 
     const { user } = useContext(UserContext);
-    // { !!user && SetUserName(user.firstName) }
+    { !!user && SetUserName(user.firstName) }
 
     const [extended, setExtended] = useState(false);
     const loadprompt = async (prompt) => {
@@ -65,7 +65,7 @@ function Chatpage() {
                     {!showResult ?
                         <>
                             <div className="greet">
-                                <p> <span className='username'>Hello,{!!user && user.firstName}</span></p>
+                                <p> <span className='username'>Hello,{userName}</span></p>
                                 <p>How can I assist you today?</p>
                             </div>
                             <div className="chat-cards">
