@@ -44,36 +44,45 @@ const signupUser = async (req, res) => {
 
 
 const loginUser = async (req, res) => {
-
     try {
         const { email, password } = req.body;
-
         const user = await User.findOne({ email });
+
         if (!user) {
             return res.json({
                 error: "No User Found with this Email Address!"
-            })
+            });
         }
 
-        const match = await comparePassword(password, user.password)
-        if (match) {
-            jwt.sign({ email: user.email, firstName: user.firstName, id: user.id }, process.env.JWT_SECRET, {}, (err, token) => {
-                if (err) {
-                    throw err;
+        comparePassword(password, user.password)
+            .then((match) => {
+                if (match) {
+                    jwt.sign({ email: user.email, firstName: user.firstName, id: user.id }, process.env.JWT_SECRET, {}, (err, token) => {
+                        if (err) {
+                            throw err;
+                        }
+                        res.cookie('token', token).json(user);
+                    });
+                } else {
+                    // Incorrect Password
+                    return res.json({
+                        error: "Invalid Password!"
+                    });
                 }
-                res.cookie('token', token).json(user)
             })
-        }
-
-        if (!match) {
-            res.json("Invalid Password!");
-        }
-
+            .catch((error) => {
+                console.log(error);
+                return res.json({
+                    error: "Internal Server Error"
+                });
+            });
     } catch (error) {
         console.log(error);
+        return res.json({
+            error: "Internal Server Error"
+        });
     }
-
-}
+};
 
 const getProfile = (req, res) => {
     const { token } = req.cookies
